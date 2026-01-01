@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Happy New Year</title>
+        <title>Happy New Year 2026</title>
 
         <!-- Bootstrap 5 CSS -->
         <link
@@ -553,7 +554,7 @@
                     <div class="col-md-8 text-md-end">
                         <div class="d-none d-md-block">
                             <h3 class="text-warning">New Year Celebration
-                                2025</h3>
+                                2026</h3>
                             <p class="text-light">Interactive Fireworks
                                 Animation</p>
                         </div>
@@ -566,7 +567,7 @@
         <section class="main-title">
             <div class="container">
                 <h1><i class="fas fa-glass-cheers"></i> New Year Celebration
-                    2025✨</h1>
+                    2026✨</h1>
                 <p class="lead">Click the button to start the celebration!
                     Customize the animation with the controls below.</p>
             </div>
@@ -675,7 +676,7 @@
                                     <div class="p-3 bg-dark rounded">
                                         <h6 class="text-warning">Year</h6>
                                         <h4 id="currentYear"
-                                            class="mb-0">2025</h4>
+                                            class="mb-0">2026</h4>
                                     </div>
                                 </div>
                             </div>
@@ -691,7 +692,7 @@
             <div class="container">
                 <div class="slideshow-container">
                     <h2 class="slideshow-title"><i
-                            class="fas fa-images me-2"></i>2025 Memories</h2>
+                            class="fas fa-images me-2"></i>2026 Memories</h2>
 
                     <div class="photo-slideshow" id="photoSlideshow">
                        
@@ -721,7 +722,7 @@
                     <div
                         class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                         <p class="mb-0">New Year Celebration Animation &copy;
-                            2025 | Created by <strong
+                            2026 | Created by <strong
                                 class="text-warning">Gokulakannan M</strong></p>
                     </div>
                     <div class="col-md-6 text-center text-md-end">
@@ -876,7 +877,7 @@
         const animationArea = document.getElementById('animationArea');
         const countdownEl = document.getElementById('countdown');
         const newYearText = document.getElementById('newYearText');
-        const yearNumber = document.getElementById('yearNumber');
+        const yearNumber = document.querySelector('.year-number');
         const fireworkCounter = document.getElementById('fireworkCounter');
         const fireworkCounterDisplay = document.getElementById('fireworkCounterDisplay');
         const fireworkCountSlider = document.getElementById('fireworkCount');
@@ -897,9 +898,9 @@
         let countdownInterval;
         let countdownValue = 5;
         
-        // Update current year
-        const currentYear = new Date().getFullYear() + 1;
-        yearNumber.textContent = currentYear;
+        // Update current year - Set to 2026 explicitly
+        const currentYear = 2026;
+        yearNumber.textContent = `${currentYear}💫`;
         currentYearEl.textContent = currentYear;
         
         // Update slider values
@@ -1191,13 +1192,20 @@
         mobileResetBtn.addEventListener('click', resetAnimation);
         
         // Event listeners for slideshow
-        prevSlideBtn.addEventListener('click', prevSlide);
-        nextSlideBtn.addEventListener('click', nextSlide);
+        if (prevSlideBtn) {
+            prevSlideBtn.addEventListener('click', prevSlide);
+        }
+        if (nextSlideBtn) {
+            nextSlideBtn.addEventListener('click', nextSlide);
+        }
         
         // Initialize with some visual elements
         window.addEventListener('load', () => {
-            // Initialize slideshow
-            initSlideshow();
+            // Initialize slideshow if elements exist
+            const slideshowContainer = document.getElementById('photoSlideshow');
+            if (slideshowContainer) {
+                initSlideshow();
+            }
             
             // Launch a few initial fireworks as a preview
             for (let i = 0; i < 3; i++) {
